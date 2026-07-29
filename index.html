@@ -3,54 +3,484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AevonSMP</title>
+    <title>AevonSMP | Crossplay Survival</title>
+
+    <meta name="description" content="Join AevonSMP - A premium Minecraft Crossplay Survival server.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
 <header>
-    <h1>Welcome to AevonSMP</h1>
-    <p>The Ultimate Cross-Play Survival Experience</p>
 
-    <button onclick="copyIP()">Copy Server IP</button>
+<nav>
 
-    <p id="ip">
-        Server IP: aevonsmp.online<br>
-        Bedrock Port: 19023
-    </p>
+<div class="logo">
+AevonSMP
+</div>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#features">Features</a></li>
+
+<li><a href="#staff">Staff</a></li>
+
+<li><a href="#faq">FAQ</a></li>
+
+</ul>
+
+<a class="store-button" href="https://aevonsmp.shop" target="_blank">
+Store
+</a>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>
+Welcome to AevonSMP
+</h1>
+
+<p>
+
+The Ultimate Cross-Play Survival Experience
+
+</p>
+
+<div class="buttons">
+
+<button onclick="copyIP()">
+
+Copy Server IP
+
+</button>
+
+<a href="#join">
+
+Join Now
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
 </header>
 
-<section>
-    <h2>About Our Server</h2>
+<section class="join" id="join">
 
-    <p>
-        AevonSMP is a cross-play Minecraft Survival server supporting both Java and Bedrock Edition.
-        Join our growing community, participate in events, and enjoy an optimized survival experience.
-    </p>
+<h2>
+
+Join Our Server
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+
+Java Edition
+
+</h3>
+
+<p>
+
+IP
+
+</p>
+
+<strong>
+
+aevonsmp.online
+
+</strong>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Bedrock Edition
+
+</h3>
+
+<p>
+
+IP
+
+</p>
+
+<strong>
+
+aevonsmp.online
+
+</strong>
+
+<p>
+
+Port
+
+</p>
+
+<strong>
+
+19023
+
+</strong>
+
+</div>
+
+</div>
+
 </section>
 
-<section>
-    <h2>Server Information</h2>
+<section id="features">
 
-    <ul>
-        <li>Java IP: aevonsmp.online</li>
-        <li>Bedrock IP: aevonsmp.online</li>
-        <li>Bedrock Port: 19023</li>
-    </ul>
+<h2>
+
+Server Features
+
+</h2>
+
+<div class="feature-grid">
+
+<div class="feature">
+
+<h3>
+
+Economy
+
+</h3>
+
+<p>
+
+Balanced economy and player shops.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>
+
+Crossplay
+
+</h3>
+
+<p>
+
+Java & Bedrock play together.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>
+
+Custom Events
+
+</h3>
+
+<p>
+
+Weekly competitions and prizes.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>
+
+Optimized
+
+</h3>
+
+<p>
+
+Smooth gameplay with excellent performance.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>
+
+Friendly Staff
+
+</h3>
+
+<p>
+
+Helpful moderators and admins.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>
+
+Community
+
+</h3>
+
+<p>
+
+Build, trade and survive together.
+
+</p>
+
+</div>
+
+</div>
+
 </section>
 
-<section>
-    <h2>Staff Team</h2>
+<section id="staff">
 
-    <p>
-        Owner: Aevon
-    </p>
+<h2>
+
+Staff Team
+
+</h2>
+
+<div class="staff-grid">
+
+<div class="staff">
+
+<div class="avatar">
+
+A
+
+</div>
+
+<h3>
+
+Aevon
+
+</h3>
+
+<p>
+
+Owner
+
+</p>
+
+</div>
+
+<div class="staff">
+
+<div class="avatar">
+
+?
+
+</div>
+
+<h3>
+
+Administrator
+
+</h3>
+
+<p>
+
+Coming Soon
+
+</p>
+
+</div>
+
+<div class="staff">
+
+<div class="avatar">
+
+?
+
+</div>
+
+<h3>
+
+Moderator
+
+</h3>
+
+<p>
+
+Coming Soon
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="updates">
+
+<h2>
+
+Latest Updates
+
+</h2>
+
+<div class="update">
+
+<h3>
+
+Version 2.3
+
+</h3>
+
+<p>
+
+• Order System
+
+<br>
+
+• Shop Improvements
+
+<br>
+
+• Performance Optimization
+
+<br>
+
+• Bug Fixes
+
+</p>
+
+</div>
+
+</section>
+
+<section id="faq">
+
+<h2>
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="faq">
+
+<h3>
+
+Can Java and Bedrock play together?
+
+</h3>
+
+<p>
+
+Yes! AevonSMP fully supports Crossplay.
+
+</p>
+
+</div>
+
+<div class="faq">
+
+<h3>
+
+What is the Server IP?
+
+</h3>
+
+<p>
+
+aevonsmp.online
+
+</p>
+
+</div>
+
+<div class="faq">
+
+<h3>
+
+What is the Bedrock Port?
+
+</h3>
+
+<p>
+
+19023
+
+</p>
+
+</div>
+
 </section>
 
 <footer>
-    © 2026 AevonSMP. All Rights Reserved.
+
+<h2>
+
+Ready to Join?
+
+</h2>
+
+<p>
+
+Start your adventure today.
+
+</p>
+
+<button onclick="copyIP()">
+
+Copy Server IP
+
+</button>
+
+<div class="footer-links">
+
+<a href="https://aevonsmp.shop">
+
+Store
+
+</a>
+
+<a href="#">
+
+Discord
+
+</a>
+
+</div>
+
+<p>
+
+© 2026 AevonSMP. All Rights Reserved.
+
+</p>
+
 </footer>
 
 <script src="script.js"></script>
