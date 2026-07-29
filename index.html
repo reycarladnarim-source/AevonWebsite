@@ -1,1 +1,271 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>AevonSMP</title><link rel='stylesheet' href='style.css'></head><body><header class='hero'><h1>AEVONSMP</h1><p>The Ultimate Cross-Play Survival Experience</p><button onclick='copyIP()'>Copy Server IP</button><p>Java: aevonsmp.online<br>Bedrock: aevonsmp.online:19023</p></header><section><h2>Features</h2><div class='grid'><div>Crossplay</div><div>Economy</div><div>Events</div><div>Friendly Staff</div></div></section><footer>© 2026 AevonSMP</footer><script src='script.js'></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aevon SMP — Peaceful Skies, Free Survival</title>
+<meta name="description" content="Aevon SMP — a peaceful, community-run Minecraft survival server. Java & Bedrock crossplay. Join the skies today.">
+
+<link rel="icon" type="image/png" href="images/favicon-64.png">
+<link rel="apple-touch-icon" href="images/favicon-256.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="site-header" id="top">
+  <div class="nav-wrap">
+    <a href="#top" class="brand">
+      <img src="images/logo.png" alt="Aevon SMP" class="brand-mark">
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#join">Server Info</a>
+      <a href="#updates">Updates</a>
+      <a href="#staff">Staff</a>
+    </nav>
+
+    <button class="ip-pill nav-cta" id="navCopyIp" type="button" aria-label="Copy server IP">
+      <span class="ip-pill-text">aevonsmp.online</span>
+      <span class="ip-pill-icon" aria-hidden="true">⧉</span>
+    </button>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="sky-layer" aria-hidden="true">
+    <div class="cloud-blob c1"></div>
+    <div class="cloud-blob c2"></div>
+    <div class="cloud-blob c3"></div>
+    <div class="cloud-blob c4"></div>
+    <div class="cloud-blob c5"></div>
+
+    <svg class="bird bird-a" viewBox="0 0 60 24" aria-hidden="true">
+      <path class="wing wing-left" d="M30 12 C 20 2, 6 4, 0 12 C 8 10, 18 10, 30 12 Z"/>
+      <path class="wing wing-right" d="M30 12 C 40 2, 54 4, 60 12 C 52 10, 42 10, 30 12 Z"/>
+    </svg>
+    <svg class="bird bird-b" viewBox="0 0 60 24" aria-hidden="true">
+      <path class="wing wing-left" d="M30 12 C 20 2, 6 4, 0 12 C 8 10, 18 10, 30 12 Z"/>
+      <path class="wing wing-right" d="M30 12 C 40 2, 54 4, 60 12 C 52 10, 42 10, 30 12 Z"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <p class="eyebrow">A COMMUNITY-RUN SURVIVAL SERVER</p>
+    <img src="images/logo.png" alt="Aevon SMP" class="hero-logo">
+    <p class="hero-tagline">Peaceful skies. Honest survival. Room to build the life you want, one cloud at a time.</p>
+
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="heroCopyIp" type="button">
+        <span class="btn-ip-label">aevonsmp.online</span>
+        <span class="btn-ip-sub">Click to copy IP · Port 19023</span>
+      </button>
+      <a href="#join" class="btn btn-ghost">How to Join</a>
+    </div>
+
+    <p class="hero-note">Java &amp; Bedrock — same IP, same skies.</p>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span></span>
+  </div>
+</section>
+
+<!-- cloud divider -->
+<div class="cloud-divider" role="presentation"></div>
+
+<!-- ================= FEATURES ================= -->
+<section class="section" id="features">
+  <p class="eyebrow center">WHAT YOU'LL FIND HERE</p>
+  <h2 class="section-title center">Built for a slower kind of survival</h2>
+  <p class="section-lede center">
+    <!-- TODO: Replace this intro line with your own server description. -->
+    Aevon SMP is a semi-vanilla survival world focused on community, fair rules, and a landscape worth exploring.
+  </p>
+
+  <div class="feature-grid">
+    <article class="feature-card">
+      <div class="feature-icon">☁️</div>
+      <h3>Semi-Vanilla Survival</h3>
+      <p><!-- TODO: describe your gamemode/rules --> Classic survival with light custom touches — land claims, an economy, and a world that stays yours.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="feature-icon">🕊️</div>
+      <h3>Java &amp; Bedrock Crossplay</h3>
+      <p>One server, one IP. Play with friends no matter which edition they own.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="feature-icon">🌲</div>
+      <h3>Community Events</h3>
+      <p><!-- TODO: list real events --> Regular build contests, seasonal events, and community projects run by the team.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <h3>Active, Fair Staff</h3>
+      <p>A small, hands-on staff team keeping the server friendly, griefer-free, and running smoothly.</p>
+    </article>
+  </div>
+</section>
+
+<div class="cloud-divider flip" role="presentation"></div>
+
+<!-- ================= SERVER INFO / JOIN ================= -->
+<section class="section join-section" id="join">
+  <div class="join-grid">
+    <div class="join-copy">
+      <p class="eyebrow">JOIN THE SKIES</p>
+      <h2 class="section-title">How to connect</h2>
+      <p>
+        Add Aevon SMP to your server list using the address below. Java and Bedrock
+        players connect with the exact same IP — no separate ports or extra setup needed.
+      </p>
+      <ol class="join-steps">
+        <li>Open Minecraft and go to <strong>Multiplayer</strong> (or <strong>Servers</strong> on Bedrock).</li>
+        <li>Select <strong>Add Server</strong>.</li>
+        <li>Enter the IP and port shown here.</li>
+        <li>Save, connect, and welcome to Aevon.</li>
+      </ol>
+    </div>
+
+    <div class="server-card">
+      <span class="server-card-label">Server IP</span>
+      <div class="server-card-row">
+        <span class="server-card-value" id="ipValue">aevonsmp.online</span>
+        <button class="copy-btn" id="cardCopyIp" type="button" aria-label="Copy IP">⧉</button>
+      </div>
+
+      <span class="server-card-label">Port</span>
+      <div class="server-card-row">
+        <span class="server-card-value">19023</span>
+        <button class="copy-btn" id="cardCopyPort" type="button" aria-label="Copy port">⧉</button>
+      </div>
+
+      <div class="server-card-tags">
+        <span class="tag">Java</span>
+        <span class="tag">Bedrock</span>
+        <span class="tag">Crossplay</span>
+      </div>
+
+      <p class="server-card-note">Website: aevonsmp.fun · Game address: aevonsmp.online</p>
+    </div>
+  </div>
+</section>
+
+<div class="cloud-divider" role="presentation"></div>
+
+<!-- ================= UPDATES ================= -->
+<section class="section" id="updates">
+  <p class="eyebrow center">FROM THE SKIES ABOVE</p>
+  <h2 class="section-title center">Server updates</h2>
+  <p class="section-lede center"><!-- TODO: replace placeholder updates below with your real patch notes --></p>
+
+  <div class="updates-list">
+    <article class="update-card">
+      <span class="update-date">TBD</span>
+      <h3>Update title goes here</h3>
+      <p>Replace this with your latest patch notes, new features, or map changes. Keep it short and postable.</p>
+    </article>
+
+    <article class="update-card">
+      <span class="update-date">TBD</span>
+      <h3>Second update title</h3>
+      <p>Add as many of these cards as you need — copy the block in index.html to add more.</p>
+    </article>
+
+    <article class="update-card">
+      <span class="update-date">TBD</span>
+      <h3>Server launch</h3>
+      <p>Aevon SMP opens its skies to the community for the very first time.</p>
+    </article>
+  </div>
+</section>
+
+<div class="cloud-divider flip" role="presentation"></div>
+
+<!-- ================= STAFF ================= -->
+<section class="section" id="staff">
+  <p class="eyebrow center">THE TEAM</p>
+  <h2 class="section-title center">Who keeps the skies clear</h2>
+
+  <div class="staff-grid">
+    <article class="staff-card">
+      <div class="staff-avatar">?</div>
+      <h3>Staff Name</h3>
+      <span class="staff-role">Owner</span>
+    </article>
+    <article class="staff-card">
+      <div class="staff-avatar">?</div>
+      <h3>Staff Name</h3>
+      <span class="staff-role">Co-Owner</span>
+    </article>
+    <article class="staff-card">
+      <div class="staff-avatar">?</div>
+      <h3>Staff Name</h3>
+      <span class="staff-role">Admin</span>
+    </article>
+    <article class="staff-card">
+      <div class="staff-avatar">?</div>
+      <h3>Staff Name</h3>
+      <span class="staff-role">Moderator</span>
+    </article>
+  </div>
+  <p class="staff-note"><!-- TODO: replace the four cards above with your real staff names, roles, and avatar images --></p>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-section">
+  <div class="sky-layer" aria-hidden="true">
+    <div class="cloud-blob c1"></div>
+    <div class="cloud-blob c3"></div>
+    <svg class="bird bird-a" viewBox="0 0 60 24" aria-hidden="true">
+      <path class="wing wing-left" d="M30 12 C 20 2, 6 4, 0 12 C 8 10, 18 10, 30 12 Z"/>
+      <path class="wing wing-right" d="M30 12 C 40 2, 54 4, 60 12 C 52 10, 42 10, 30 12 Z"/>
+    </svg>
+  </div>
+  <div class="cta-content">
+    <h2 class="section-title">Ready for clearer skies?</h2>
+    <p>Jump in, claim your plot, and build something worth flying over.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="ctaCopyIp" type="button">
+        <span class="btn-ip-label">aevonsmp.online</span>
+        <span class="btn-ip-sub">Click to copy IP · Port 19023</span>
+      </button>
+      <!-- TODO: replace # with your real Discord invite link -->
+      <a href="#" class="btn btn-ghost" target="_blank" rel="noopener">Join Discord</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <img src="images/logo.png" alt="Aevon SMP" class="footer-logo">
+  <nav class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#join">Server Info</a>
+    <a href="#updates">Updates</a>
+    <a href="#staff">Staff</a>
+    <!-- TODO: add real Discord / socials links -->
+    <a href="#" target="_blank" rel="noopener">Discord</a>
+  </nav>
+  <p class="footer-copy">&copy; <span id="year"></span> Aevon SMP. Not affiliated with Mojang or Microsoft.</p>
+</footer>
+
+<div class="toast" id="toast">Copied!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
