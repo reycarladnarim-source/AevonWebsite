@@ -271,15 +271,11 @@ button {
   opacity: 0.75;
 }
 .wing { fill: var(--ink); opacity: 0.55; transform-origin: 30px 12px; }
-.wing-left { animation: flap-left 0.5s ease-in-out infinite alternate; }
-.wing-right { animation: flap-right 0.5s ease-in-out infinite alternate; }
+.wing-left { animation: flap 0.5s ease-in-out infinite alternate; }
+.wing-right { animation: flap 0.5s ease-in-out infinite alternate; }
 
-@keyframes flap-left {
-  from { transform: rotateY(0deg) translateY(0); }
-  to   { transform: scaleY(0.4) translateY(3px); }
-}
-@keyframes flap-right {
-  from { transform: rotateY(0deg) translateY(0); }
+@keyframes flap {
+  from { transform: scaleY(1) translateY(0); }
   to   { transform: scaleY(0.4) translateY(3px); }
 }
 @keyframes fly {
@@ -385,15 +381,36 @@ button {
 }
 
 /* =========================================================
-   Cloud divider (uses the animated GIF banner, tiled)
+   Intro ribbon — the animated GIF, shown ONCE at full width
+   (not tiled — the source animation isn't a repeating texture,
+   it's a single reveal, so we stretch it once instead of
+   repeating it, which avoided showing fragmented/duplicated
+   copies of the animation side by side)
+   ========================================================= */
+.intro-ribbon {
+  width: 100%;
+  height: 52px;
+  overflow: hidden;
+  line-height: 0;
+}
+.intro-ribbon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================================================
+   Cloud divider — clean CSS scalloped cloud-bump pattern
    ========================================================= */
 .cloud-divider {
-  height: 56px;
-  background-image: url("images/clouds-banner.gif");
+  height: 40px;
+  background-color: var(--white);
+  background-image:
+    radial-gradient(circle at 20px 40px, var(--sky-2) 18px, transparent 19px),
+    radial-gradient(circle at 60px 40px, var(--sky-2) 18px, transparent 19px);
   background-repeat: repeat-x;
-  background-size: auto 100%;
-  background-position: center;
-  opacity: 0.9;
+  background-size: 80px 40px;
 }
 .cloud-divider.flip { transform: scaleY(-1); }
 
