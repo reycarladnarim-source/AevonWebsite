@@ -71,7 +71,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ---------- Scroll reveal ---------- */
 const revealTargets = document.querySelectorAll(
-  ".feature-card, .update-card, .news-card, .staff-card, .server-card, .join-copy"
+  ".feature-card, .update-card, .news-card, .staff-card, .server-card, .join-copy, .gallery-item"
 );
 revealTargets.forEach((el) => el.classList.add("reveal"));
 
@@ -91,6 +91,41 @@ if ("IntersectionObserver" in window) {
 } else {
   revealTargets.forEach((el) => el.classList.add("in-view"));
 }
+
+/* ---------- Player gallery carousels ---------- */
+document.querySelectorAll(".gallery-item").forEach((item) => {
+  const slides = Array.from(item.querySelectorAll(".gallery-slide"));
+  const dotsWrap = item.querySelector(".gallery-dots");
+  const prevBtn = item.querySelector(".gallery-arrow.prev");
+  const nextBtn = item.querySelector(".gallery-arrow.next");
+  if (!slides.length) return;
+
+  let current = Math.max(0, slides.findIndex((s) => s.classList.contains("is-active")));
+
+  // Build one dot per picture
+  const dots = slides.map((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "gallery-dot";
+    dot.setAttribute("aria-label", `Go to picture ${i + 1}`);
+    dot.addEventListener("click", () => goTo(i));
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  function goTo(index) {
+    slides[current].classList.remove("is-active");
+    dots[current].classList.remove("is-active");
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add("is-active");
+    dots[current].classList.add("is-active");
+  }
+
+  dots[current].classList.add("is-active");
+
+  if (prevBtn) prevBtn.addEventListener("click", () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => goTo(current + 1));
+});
 
 /* ---------- Background music ---------- */
 const bgMusic = document.getElementById("bgMusic");
