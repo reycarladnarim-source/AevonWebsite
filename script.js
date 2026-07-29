@@ -91,3 +91,57 @@ if ("IntersectionObserver" in window) {
 } else {
   revealTargets.forEach((el) => el.classList.add("in-view"));
 }
+
+/* ---------- Background music ---------- */
+const bgMusic = document.getElementById("bgMusic");
+const soundToggle = document.getElementById("soundToggle");
+const soundToggleIcon = document.getElementById("soundToggleIcon");
+
+if (bgMusic && soundToggle) {
+  bgMusic.volume = 0.4;
+  let userEnabled = false;
+
+  function setToggleState(isPlaying) {
+    soundToggle.setAttribute("aria-pressed", String(isPlaying));
+    soundToggleIcon.textContent = isPlaying ? "🔊" : "🔇";
+  }
+
+  // Try to start playback automatically. Most browsers block audio with
+  // sound before any user interaction, so this quietly falls back to
+  // waiting for the first click/tap/keypress on the page.
+  function tryAutoplay() {
+    bgMusic.muted = false;
+    const playPromise = bgMusic.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => setToggleState(true))
+        .catch(() => setToggleState(false));
+    }
+  }
+
+  tryAutoplay();
+
+  function unlockOnFirstInteraction() {
+    if (userEnabled) return;
+    userEnabled = true;
+    if (bgMusic.paused) {
+      bgMusic.muted = false;
+      bgMusic.play().then(() => setToggleState(true)).catch(() => setToggleState(false));
+    }
+    window.removeEventListener("pointerdown", unlockOnFirstInteraction);
+    window.removeEventListener("keydown", unlockOnFirstInteraction);
+  }
+  window.addEventListener("pointerdown", unlockOnFirstInteraction);
+  window.addEventListener("keydown", unlockOnFirstInteraction);
+
+  soundToggle.addEventListener("click", () => {
+    userEnabled = true;
+    if (bgMusic.paused) {
+      bgMusic.muted = false;
+      bgMusic.play().then(() => setToggleState(true)).catch(() => setToggleState(false));
+    } else {
+      bgMusic.pause();
+      setToggleState(false);
+    }
+  });
+}
