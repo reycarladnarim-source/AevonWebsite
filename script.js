@@ -1,0 +1,1 @@
+function copyIP(){navigator.clipboard.writeText('aevonsmp.online');alert('Server IP copied: aevonsmp.online');}
