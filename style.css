@@ -1134,6 +1134,124 @@ button {
 }
 
 /* =========================================================
+   Vote drawer — left-side sliding panel with vote links
+   ========================================================= */
+.vote-drawer {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 997;
+  display: flex;
+  align-items: stretch;
+}
+
+.vote-drawer-tab {
+  width: 42px;
+  flex-shrink: 0;
+  padding: 18px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  box-shadow: var(--shadow-soft);
+  transition: background 0.2s;
+}
+.vote-drawer-tab:hover { background: #0d283c; }
+
+.vote-drawer-arrow {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+.vote-drawer.open .vote-drawer-arrow,
+.vote-drawer:hover .vote-drawer-arrow {
+  transform: rotate(180deg);
+}
+
+.vote-drawer-label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.vote-drawer-panel {
+  width: 0;
+  overflow: hidden;
+  background: var(--white);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  box-shadow: var(--shadow-soft);
+  transition: width 0.38s ease;
+}
+.vote-drawer.open .vote-drawer-panel,
+.vote-drawer:hover .vote-drawer-panel {
+  width: 250px;
+}
+
+.vote-drawer-panel-inner {
+  width: 250px;
+  padding: 22px 20px;
+}
+
+.vote-drawer-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 6px;
+}
+
+.vote-drawer-sub {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.vote-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vote-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--sky-1);
+  border: 1px solid rgba(18, 50, 73, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--ink);
+  transition: background 0.2s, transform 0.15s;
+}
+.vote-link:hover {
+  background: var(--mint-light);
+  transform: translateX(2px);
+}
+.vote-link-arrow { color: var(--mint); font-size: 0.9rem; flex-shrink: 0; }
+
+@media (max-width: 520px) {
+  .vote-drawer-tab { width: 36px; padding: 14px 0; }
+  .vote-drawer.open .vote-drawer-panel,
+  .vote-drawer:hover .vote-drawer-panel { width: 205px; }
+  .vote-drawer-panel-inner { width: 205px; padding: 18px 14px; }
+  .vote-link { font-size: 0.78rem; padding: 9px 10px; }
+}
+
+/* =========================================================
    Reveal-on-scroll
    ========================================================= */
 .reveal {

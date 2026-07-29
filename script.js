@@ -127,6 +127,31 @@ document.querySelectorAll(".gallery-item").forEach((item) => {
   if (nextBtn) nextBtn.addEventListener("click", () => goTo(current + 1));
 });
 
+/* ---------- Vote links drawer ---------- */
+const voteDrawer = document.getElementById("voteDrawer");
+const voteDrawerTab = document.getElementById("voteDrawerTab");
+
+if (voteDrawer && voteDrawerTab) {
+  voteDrawerTab.addEventListener("click", () => {
+    const isOpen = voteDrawer.classList.toggle("open");
+    voteDrawerTab.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!voteDrawer.contains(e.target)) {
+      voteDrawer.classList.remove("open");
+      voteDrawerTab.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      voteDrawer.classList.remove("open");
+      voteDrawerTab.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
 /* ---------- Background music ---------- */
 const bgMusic = document.getElementById("bgMusic");
 const soundToggle = document.getElementById("soundToggle");
