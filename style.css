@@ -625,6 +625,81 @@ button {
   font-weight: 700;
 }
 
+/* ---- Staff org chart (two branches, tiered) ---- */
+.staff-org {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.staff-branch {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(18, 50, 73, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 28px 22px 34px;
+}
+
+.branch-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px dashed rgba(18, 50, 73, 0.15);
+}
+
+.branch-tier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 26px;
+}
+
+.branch-tier:first-of-type { padding-top: 0; }
+
+/* connecting line between tiers */
+.branch-tier:not(:first-of-type)::before {
+  content: "";
+  width: 2px;
+  height: 26px;
+  background: var(--sky-3);
+}
+
+.tier-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 14px;
+}
+
+.tier-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.tier-members .staff-card {
+  flex: 0 1 160px;
+  padding: 20px 14px;
+}
+
+.tier-members .staff-avatar {
+  width: 54px;
+  height: 54px;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.tier-members .staff-card h3 { font-size: 0.9rem; }
+
 .staff-note {
   text-align: center;
   margin-top: 30px;
@@ -729,6 +804,7 @@ button {
 @media (max-width: 920px) {
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .staff-grid { grid-template-columns: repeat(2, 1fr); }
+  .staff-org { grid-template-columns: 1fr; gap: 32px; }
   .join-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 
