@@ -640,6 +640,11 @@ button {
   border: 1px solid rgba(18, 50, 73, 0.08);
 }
 
+.news-buy-btn {
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+
 /* ---- Update section extras ---- */
 .update-card ol.update-steps,
 .update-card ul.update-steps {
@@ -838,6 +843,23 @@ button {
   margin: 16px 0 34px;
   color: var(--ink-soft);
   font-size: 1.05rem;
+}
+
+.cta-store-note {
+  margin-top: 30px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.cta-store-btn {
+  background: var(--sun-deep);
+  align-items: center;
+  justify-content: center;
+}
+.cta-store-btn:hover {
+  background: var(--sun);
 }
 
 /* =========================================================
