@@ -71,7 +71,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ---------- Scroll reveal ---------- */
 const revealTargets = document.querySelectorAll(
-  ".feature-card, .update-card, .staff-card, .server-card, .join-copy"
+  ".feature-card, .update-card, .news-card, .staff-card, .server-card, .join-copy"
 );
 revealTargets.forEach((el) => el.classList.add("reveal"));
 

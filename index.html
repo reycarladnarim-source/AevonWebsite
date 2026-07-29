@@ -27,6 +27,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="#features">Features</a>
       <a href="#join">Server Info</a>
+      <a href="#news">Server News</a>
       <a href="#updates">Updates</a>
       <a href="#staff">Staff</a>
     </nav>
@@ -189,34 +190,108 @@
 
 <div class="cloud-divider" role="presentation"></div>
 
-<!-- ================= UPDATES ================= -->
-<section class="section" id="updates">
+<!-- ================= SERVER NEWS ================= -->
+<section class="section" id="news">
   <p class="eyebrow center">FROM THE SKIES ABOVE</p>
-  <h2 class="section-title center">Server updates</h2>
-  <p class="section-lede center"><!-- TODO: replace placeholder updates below with your real patch notes --></p>
+  <h2 class="section-title center">Server news</h2>
+  <p class="section-lede center">Announcements and shoutouts from the Aevon SMP team.</p>
 
-  <div class="updates-list">
-    <article class="update-card">
-      <span class="update-date">TBD</span>
-      <h3>Update title goes here</h3>
-      <p>Replace this with your latest patch notes, new features, or map changes. Keep it short and postable.</p>
-    </article>
+  <div class="news-list">
+    <article class="news-card">
+      <img src="images/divine-set.jpg" alt="Divine Zephyr cosmetic weapon, tool, and armor set" class="news-image">
+      <div class="news-body">
+        <span class="update-date">ANNOUNCEMENT</span>
+        <h3>Thank You, Aevon SMP Community!</h3>
+        <p>Thank you to everyone who continues to support Aevon SMP! We're happy to announce that the Divine Set — cosmetic weapons, tools, and armor — is now available for everyone.</p>
+        <p>This was made possible because of your generous donations. We truly appreciate all of your support! If you'd like to know more or purchase the Divine Set, just create a ticket in our Discord.</p>
 
-    <article class="update-card">
-      <span class="update-date">TBD</span>
-      <h3>Second update title</h3>
-      <p>Add as many of these cards as you need — copy the block in index.html to add more.</p>
-    </article>
+        <p class="news-subhead">Supporters &amp; Donators</p>
+        <div class="supporter-tags">
+          <span class="tag">szauz</span>
+          <span class="tag">1van0_0</span>
+          <span class="tag">Tutell1</span>
+          <span class="tag">Jeyxenn</span>
+          <span class="tag">Crrzymedic</span>
+          <span class="tag">Lozure</span>
+          <span class="tag">val03310</span>
+          <span class="tag">Ashura01</span>
+          <span class="tag">Ichikyell</span>
+          <span class="tag">packetloss</span>
+        </div>
 
-    <article class="update-card">
-      <span class="update-date">TBD</span>
-      <h3>Server launch</h3>
-      <p>Aevon SMP opens its skies to the community for the very first time.</p>
+        <p>Thank you for being part of Aevon SMP!</p>
+      </div>
     </article>
   </div>
 </section>
 
 <div class="cloud-divider flip" role="presentation"></div>
+
+<!-- ================= SERVER UPDATES ================= -->
+<section class="section" id="updates">
+  <p class="eyebrow center">PATCH NOTES</p>
+  <h2 class="section-title center">Server updates</h2>
+  <p class="section-lede center">AevonSMP Update v2.3 — new features, improvements &amp; server optimizations.</p>
+
+  <div class="updates-list">
+    <article class="update-card">
+      <span class="update-date">NEW FEATURE</span>
+      <h3>Order System — Need an Item?</h3>
+      <p>Looking for a specific item but don't have time to gather it yourself? You can now create an Order Request and let other players fulfill it.</p>
+      <p><strong>How it works:</strong></p>
+      <ol class="update-steps">
+        <li>Hold the item you want to order.</li>
+        <li>Type <code>/aorder &lt;Price&gt; &lt;Quantity&gt;</code></li>
+      </ol>
+      <p>Example — while holding an Apple: <code>/aorder 100 5</code>. This broadcasts your request to the entire server. Players who have the item can accept your order with <code>/adeliver</code>. Buying items from other players has never been easier!</p>
+    </article>
+
+    <article class="update-card">
+      <span class="update-date">NEW FEATURE</span>
+      <h3>Spawner Crate — I Want That!</h3>
+      <p>A new Spawner Crate is now available at spawn! Grab a Spawner Key at the Key Exchange, then head to <code>/spawn</code> to get yours.</p>
+    </article>
+
+    <article class="update-card">
+      <span class="update-date">NEW FEATURE</span>
+      <h3>Chest Sorter — Organize Everything Instantly!</h3>
+      <p>Tired of manually sorting your inventory and chests? Now you can sort your items automatically:</p>
+      <ul class="update-steps">
+        <li>Shift + Click anywhere in your inventory to instantly organize your items.</li>
+        <li>Use <code>/chestsort</code> to configure and manage your Auto Sorter settings.</li>
+      </ul>
+      <p>Keeping your storage clean has never been this easy.</p>
+    </article>
+
+    <article class="update-card">
+      <span class="update-date">IMPROVEMENT</span>
+      <h3>AJobs Update — Fisherman Buff!</h3>
+      <p>Fishing just became much more rewarding! The Fisherman job now earns more experience depending on the rarity of the item you catch. Time to grab your fishing rod and level up faster.</p>
+      <img src="images/fishing-xp-table.png" alt="Fisherman job XP table by catch type" class="update-image">
+    </article>
+
+    <article class="update-card">
+      <span class="update-date">FIXED</span>
+      <h3>Backpack Update — Fully Fixed!</h3>
+      <p>Great news! The Backpack System has been completely fixed and is now running more reliably than ever.</p>
+      <p>To improve server performance and ensure a smoother gameplay experience, the backpack limit has been adjusted:</p>
+      <ul class="update-steps">
+        <li>Previous limit: 3 backpacks per player</li>
+        <li>New limit: 1 backpack per player</li>
+      </ul>
+      <p>This change helps reduce server load while maintaining a stable experience for everyone.</p>
+    </article>
+
+    <article class="update-card">
+      <span class="update-date">PERFORMANCE</span>
+      <h3>Massive Server Optimization!</h3>
+      <p>We've successfully optimized the server by approximately 30–50%, resulting in smoother gameplay and improved overall performance. As part of these optimizations, you may notice slight changes to certain mob behaviors — these adjustments are intentional and help keep the server running efficiently.</p>
+    </article>
+  </div>
+
+  <p class="update-closing">If you encounter any bugs or unexpected issues after the update, please don't hesitate to create a support ticket. Your feedback helps us continue improving AevonSMP.<br><br>
+  Thank you for supporting AevonSMP! We hope you enjoy everything included in Update v2.3. Have fun, and happy grinding!</p>
+</section>
 
 <!-- ================= STAFF ================= -->
 <section class="section" id="staff">
@@ -430,6 +505,7 @@
   <nav class="footer-links">
     <a href="#features">Features</a>
     <a href="#join">Server Info</a>
+    <a href="#news">Server News</a>
     <a href="#updates">Updates</a>
     <a href="#staff">Staff</a>
     <a href="https://dsc.gg/aevon" target="_blank" rel="noopener">Discord</a>
