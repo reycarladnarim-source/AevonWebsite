@@ -731,6 +731,52 @@ button {
   font-weight: 700;
 }
 
+/* ---- Staff section sky decoration (clouds + birds, matches hero) ---- */
+.staff-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.staff-sky {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+.staff-sky .cloud-blob { opacity: 0.5; }
+
+.sc1 { width: 130px; height: 48px; top: 4%; left: 6%; animation-duration: 42s; }
+.sc1::before { width: 75px; height: 75px; top: -32px; left: 12px; }
+.sc1::after  { width: 56px; height: 56px; top: -20px; left: 62px; }
+
+.sc2 { width: 100px; height: 38px; top: 14%; right: 8%; animation-duration: 36s; animation-delay: -8s; }
+.sc2::before { width: 58px; height: 58px; top: -26px; left: 8px; }
+.sc2::after  { width: 46px; height: 46px; top: -16px; left: 48px; }
+
+.sc3 { width: 150px; height: 54px; bottom: 8%; left: 10%; animation-duration: 46s; animation-delay: -18s; }
+.sc3::before { width: 84px; height: 84px; top: -36px; left: 16px; }
+.sc3::after  { width: 62px; height: 62px; top: -22px; left: 78px; }
+
+.sc4 { width: 110px; height: 42px; bottom: 16%; right: 12%; animation-duration: 32s; animation-delay: -4s; }
+.sc4::before { width: 62px; height: 62px; top: -28px; left: 10px; }
+.sc4::after  { width: 48px; height: 48px; top: -18px; left: 52px; }
+
+.staff-bird-a { top: 10%; left: -10%; animation-duration: 34s; }
+.staff-bird-b { top: 55%; left: -14%; width: 26px; animation-duration: 40s; animation-delay: -14s; }
+
+.staff-sky .wing { fill: var(--sky-deep); opacity: 0.4; }
+
+.staff-section > .eyebrow,
+.staff-section > .section-title,
+.staff-section > .section-lede,
+.staff-org,
+.staff-note {
+  position: relative;
+  z-index: 1;
+}
+
 /* ---- Staff org chart (two branches, tiered) ---- */
 .staff-org {
   margin-top: 50px;
@@ -1002,6 +1048,24 @@ button {
 @keyframes bg-drift {
   0%   { transform: translateX(0); }
   100% { transform: translateX(145vw); }
+}
+
+.bg-bird {
+  position: absolute;
+  width: 34px;
+  height: auto;
+  animation: bg-fly linear infinite;
+}
+.bg-bird .wing { fill: var(--sky-deep); opacity: 0.5; }
+.bg-bird .wing-left,
+.bg-bird .wing-right { animation: flap 0.55s ease-in-out infinite alternate; }
+
+.bgb1 { top: 16%; left: -12%; animation-duration: 48s; }
+.bgb2 { top: 62%; left: -18%; width: 24px; opacity: 0.7; animation-duration: 64s; animation-delay: -22s; }
+
+@keyframes bg-fly {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(145vw, -60px); }
 }
 
 /* =========================================================
