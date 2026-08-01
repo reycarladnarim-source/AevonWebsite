@@ -381,23 +381,19 @@ button {
 }
 
 /* =========================================================
-   Intro ribbon — the animated GIF, shown ONCE at full width
-   (not tiled — the source animation isn't a repeating texture,
-   it's a single reveal, so we stretch it once instead of
-   repeating it, which avoided showing fragmented/duplicated
-   copies of the animation side by side)
+   Hero background photo — blurred aurora screenshot sitting
+   behind the sky-layer clouds/birds and hero content
    ========================================================= */
-.intro-ribbon {
-  width: 100%;
-  height: 52px;
-  overflow: hidden;
-  line-height: 0;
-}
-.intro-ribbon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+.hero-bg-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("images/hero-bg.png");
+  background-size: cover;
+  background-position: center 40%;
+  filter: blur(6px);
+  transform: scale(1.05);
+  opacity: 0.55;
 }
 
 /* =========================================================
