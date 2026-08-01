@@ -302,9 +302,42 @@ button {
 
 .hero-tagline {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--ink-soft);
+  color: rgba(255, 255, 255, 0.88);
   max-width: 520px;
   margin-bottom: 34px;
+}
+
+.hero .btn-ghost {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: var(--white);
+}
+.hero .btn-ghost:hover { background: var(--white); color: var(--ink); }
+
+.hero .hero-note { color: rgba(255, 255, 255, 0.65); }
+
+.hero .scroll-cue { border-color: rgba(255, 255, 255, 0.55); }
+.hero .scroll-cue span { background: rgba(255, 255, 255, 0.85); }
+
+/* ---- Twinkling star particles over the hero photo ---- */
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-stars .star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+.hero-stars .star.big { width: 3px; height: 3px; box-shadow: 0 0 4px 1px rgba(255,255,255,0.6); }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
 }
 
 .hero-actions {
@@ -381,8 +414,9 @@ button {
 }
 
 /* =========================================================
-   Hero background photo — blurred aurora screenshot sitting
-   behind the sky-layer clouds/birds and hero content
+   Hero background photo — the aurora screenshot is now the
+   hero's actual backdrop (logo.png is transparent, so it sits
+   directly on top of this), with a soft overlay for legibility
    ========================================================= */
 .hero-bg-photo {
   position: absolute;
@@ -391,9 +425,19 @@ button {
   background-image: url("images/hero-bg.png");
   background-size: cover;
   background-position: center 40%;
-  filter: blur(6px);
+  filter: blur(4px);
   transform: scale(1.05);
-  opacity: 0.55;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg,
+    rgba(9, 20, 33, 0.35) 0%,
+    rgba(9, 20, 33, 0.15) 40%,
+    rgba(9, 20, 33, 0.15) 65%,
+    rgba(9, 20, 33, 0.45) 100%);
 }
 
 /* =========================================================
@@ -698,6 +742,13 @@ button {
   padding: 30px 18px;
   box-shadow: var(--shadow-card);
   border: 1px solid rgba(18, 50, 73, 0.06);
+  border-top: 3px solid var(--sky-3);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft);
 }
 
 .staff-avatar {
@@ -825,6 +876,33 @@ button {
   color: var(--mint);
   margin-bottom: 14px;
 }
+
+/* Role-based accent colors — a quick visual read of the hierarchy */
+.branch-tier[data-tier="owner"] .tier-label { color: var(--sun-deep); }
+.branch-tier[data-tier="owner"] .staff-card { border-top-color: var(--sun-deep); }
+
+.branch-tier[data-tier="coowner"] .tier-label { color: var(--sun); }
+.branch-tier[data-tier="coowner"] .staff-card { border-top-color: var(--sun); }
+
+.branch-tier[data-tier="manager"] .tier-label,
+.branch-tier[data-tier="architect-head"] .tier-label { color: var(--mint); }
+.branch-tier[data-tier="manager"] .staff-card,
+.branch-tier[data-tier="architect-head"] .staff-card { border-top-color: var(--mint); }
+
+.branch-tier[data-tier="assistant"] .tier-label,
+.branch-tier[data-tier="architect"] .tier-label { color: var(--mint-light); }
+.branch-tier[data-tier="assistant"] .staff-card,
+.branch-tier[data-tier="architect"] .staff-card { border-top-color: var(--mint-light); }
+
+.branch-tier[data-tier="admin"] .tier-label { color: var(--sky-deep); }
+.branch-tier[data-tier="admin"] .staff-card { border-top-color: var(--sky-deep); }
+
+.branch-tier[data-tier="moderator"] .tier-label { color: var(--ink-soft); }
+.branch-tier[data-tier="moderator"] .staff-card { border-top-color: var(--ink-soft); }
+
+.branch-tier[data-tier="support"] .tier-label { color: var(--ink-faint); }
+.branch-tier[data-tier="support"] .staff-card { border-top-color: var(--sky-3); }
+
 
 .tier-members {
   display: flex;
@@ -1366,4 +1444,61 @@ button {
   .btn { width: 100%; align-items: center; text-align: center; }
   .gallery-arrow { width: 34px; height: 34px; font-size: 1.1rem; }
   .gallery-list { gap: 46px; }
+}
+
+/* =========================================================
+   Gallery lightbox
+   ========================================================= */
+.gallery-slide { cursor: zoom-in; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(9, 20, 33, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.lightbox.open { opacity: 1; pointer-events: auto; }
+
+.lightbox img {
+  max-width: min(90vw, 1100px);
+  max-height: 88vh;
+  border-radius: var(--radius-md);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
+
+/* =========================================================
+   Scroll-reveal entrance animation (fade + rise into view)
+   ========================================================= */
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-fade.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
