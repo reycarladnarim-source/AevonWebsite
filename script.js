@@ -205,3 +205,29 @@ if (bgMusic && soundToggle) {
     }
   });
 }
+
+// ATeam Wiki floating viewer
+(() => {
+  const viewer = document.querySelector('[data-wiki-viewer]');
+  if (!viewer) return;
+  const pages = [
+    ['images/wiki/ateam/ateam-page-1.png','Page 1 — Creation, Recruitment, Team Structure, Profile & Levels'],
+    ['images/wiki/ateam/ateam-page-2.png','Page 2 — Team Power System'],
+    ['images/wiki/ateam/ateam-page-3.png','Page 3 — PvP, Dominance, Quests, Wealth, Bank, Homes & Roles'],
+    ['images/wiki/ateam/ateam-page-4.png','Page 4 — Alliances, Identity, Leaderboard, Inactivity & Integrations'],
+    ['images/wiki/ateam/ateam-page-5.png','Page 5 — Commands, Permissions, Settings & Storage'],
+    ['images/wiki/ateam/ateam-page-6.png','Page 6 — Alliances, Enemies, Storage, Messages & Quick Commands']
+  ];
+  let index = 0;
+  const image=viewer.querySelector('[data-wiki-image]'), caption=viewer.querySelector('[data-wiki-caption]'), current=viewer.querySelector('[data-wiki-current]');
+  const dotsBox=document.querySelector('[data-wiki-dots]');
+  const dots=pages.map((_,i)=>{const b=document.createElement('button');b.className='wiki-dot';b.type='button';b.setAttribute('aria-label',`Go to page ${i+1}`);b.onclick=()=>show(i);dotsBox.appendChild(b);return b;});
+  function show(i){index=(i+pages.length)%pages.length;image.src=pages[index][0];image.alt=`ATeam Wiki page ${index+1}`;caption.textContent=pages[index][1];current.textContent=index+1;dots.forEach((d,j)=>d.classList.toggle('active',j===index));}
+  viewer.querySelector('.wiki-prev').onclick=()=>show(index-1);
+  viewer.querySelector('.wiki-next').onclick=()=>show(index+1);
+  image.onclick=()=>window.open(pages[index][0], '_blank');
+  let sx=0; image.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true});
+  image.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)show(index+(dx<0?1:-1));},{passive:true});
+  document.addEventListener('keydown',e=>{if(!viewer.closest('#wiki'))return;if(e.key==='ArrowLeft')show(index-1);if(e.key==='ArrowRight')show(index+1);});
+  show(0);
+})();
