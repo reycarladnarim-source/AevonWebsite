@@ -1348,3 +1348,45 @@ button {
     background-position: center center;
   }
 }
+
+
+/* =========================================================
+   Featured ATeam Update
+   ========================================================= */
+.updates-list.updates-featured { max-width: 1000px; }
+.ateam-update { padding: 0; overflow: hidden; border-left: 0; }
+.ateam-update > .update-date { display: inline-block; margin: 24px 28px 14px; }
+.ateam-news-image {
+  width: calc(100% - 32px);
+  margin: 0 16px;
+  display: block;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(18, 50, 73, 0.08);
+}
+.ateam-news-body { padding: 28px; }
+.ateam-news-body > p { font-size: 1rem; line-height: 1.75; }
+.ateam-news-body h3 { margin-top: 28px; margin-bottom: 14px; }
+.ateam-feature-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 18px; }
+.ateam-feature-list p {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--sky-1);
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.ateam-command-table-wrap { overflow-x: auto; border: 1px solid rgba(18, 50, 73, 0.08); border-radius: 12px; }
+.ateam-command-table { width: 100%; border-collapse: collapse; min-width: 620px; }
+.ateam-command-table th, .ateam-command-table td { padding: 11px 14px; text-align: left; border-bottom: 1px solid rgba(18, 50, 73, 0.08); }
+.ateam-command-table th { font-family: var(--font-mono); font-size: .78rem; color: var(--ink); background: var(--sky-1); }
+.ateam-command-table td { color: var(--ink-soft); font-size: .9rem; }
+.ateam-command-table tr:last-child td { border-bottom: 0; }
+.ateam-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 26px; }
+.ateam-summary-box { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border-radius: 12px; background: var(--mint-light); color: var(--ink-soft); }
+.ateam-summary-box > strong { color: var(--ink); font-family: var(--font-display); font-size: .9rem; }
+@media (max-width: 760px) {
+  .ateam-feature-list, .ateam-summary-grid { grid-template-columns: 1fr; }
+  .ateam-news-body { padding: 22px 18px; }
+  .ateam-update > .update-date { margin-left: 18px; }
+  .ateam-news-image { width: calc(100% - 20px); margin: 0 10px; }
+}
