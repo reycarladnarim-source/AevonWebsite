@@ -1390,3 +1390,54 @@ button {
   .ateam-update > .update-date { margin-left: 18px; }
   .ateam-news-image { width: calc(100% - 20px); margin: 0 10px; }
 }
+
+
+/* ================= SERVER WIKI ================= */
+.wiki-section { scroll-margin-top: 90px; }
+.wiki-card {
+  max-width: 1180px;
+  margin: 0 auto;
+  border: 1px solid rgba(151, 92, 255, .35);
+  border-radius: 24px;
+  padding: clamp(16px, 3vw, 30px);
+  background: rgba(8, 11, 24, .82);
+  box-shadow: 0 20px 70px rgba(0,0,0,.28);
+}
+.wiki-intro {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.wiki-intro h3 { margin: 8px 0; font-size: clamp(1.35rem, 3vw, 2rem); }
+.wiki-intro p { margin: 0; max-width: 760px; opacity: .85; line-height: 1.65; }
+.wiki-badge {
+  display: inline-flex;
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  background: rgba(151,92,255,.16);
+  border: 1px solid rgba(151,92,255,.4);
+}
+.wiki-page-nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.wiki-page-nav a {
+  display: grid; place-items: center; width: 38px; height: 38px;
+  border-radius: 10px; text-decoration: none; color: inherit;
+  border: 1px solid rgba(151,92,255,.45); background: rgba(151,92,255,.10);
+  font-weight: 800;
+}
+.wiki-page-nav a:hover { transform: translateY(-2px); background: rgba(151,92,255,.24); }
+.wiki-pages { display: grid; gap: 26px; }
+.wiki-page { margin: 0; scroll-margin-top: 100px; }
+.wiki-page a { display: block; border-radius: 18px; overflow: hidden; background: #020711; }
+.wiki-page img { display: block; width: 100%; height: auto; }
+.wiki-page figcaption { text-align: center; padding: 11px 8px 0; opacity: .75; font-size: .92rem; }
+.ateam-wiki-cta { margin: 22px 0 0; text-align: center; }
+@media (max-width: 760px) {
+  .wiki-intro { align-items: flex-start; flex-direction: column; }
+  .wiki-page-nav { justify-content: flex-start; }
+  .wiki-card { border-radius: 18px; }
+}
