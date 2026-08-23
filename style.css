@@ -1505,3 +1505,51 @@ button {
   .wiki-card{border-left:0;border-right:0;border-radius:0}
   .wiki-caption{font-size:.78rem}
 }
+
+/* Balanced ATeam Wiki sizing — readable without horizontal clipping */
+.wiki-card{
+  box-sizing:border-box;
+  width:min(94vw, 1280px);
+  max-width:1280px;
+  margin-left:auto;
+  margin-right:auto;
+  overflow:hidden;
+}
+.wiki-floating-viewer{
+  box-sizing:border-box;
+  width:100%;
+  max-width:1220px;
+  grid-template-columns:50px minmax(0,1fr) 50px;
+  gap:10px;
+  overflow:visible;
+}
+.wiki-stage{
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  overflow:hidden;
+}
+.wiki-stage img{
+  box-sizing:border-box;
+  display:block;
+  width:100%;
+  max-width:1100px;
+  height:auto;
+  margin:0 auto;
+  object-fit:contain;
+}
+.wiki-arrow{
+  width:46px;
+  height:52px;
+}
+@media(max-width:900px){
+  .wiki-card{width:96vw;max-width:96vw;padding:8px}
+  .wiki-floating-viewer{grid-template-columns:38px minmax(0,1fr) 38px;gap:4px}
+  .wiki-arrow{width:36px;height:46px}
+  .wiki-stage img{max-width:100%}
+}
+@media(max-width:560px){
+  .wiki-card{width:100%;max-width:100%;padding:5px}
+  .wiki-floating-viewer{grid-template-columns:30px minmax(0,1fr) 30px;gap:2px}
+  .wiki-arrow{width:28px;height:42px}
+}
