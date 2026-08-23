@@ -204,28 +204,6 @@ button {
   justify-content: center;
   padding: 120px 24px 60px;
   text-align: center;
-  /* background is repainted on scroll by script.js (night -> morning) */
-  transition: background 120ms linear;
-}
-
-/* Soft rising sun glow, hidden by night and fading in as the
-   page scrolls through the hero (see --day-progress) */
-.hero-sunrise {
-  position: absolute;
-  left: 50%;
-  bottom: -12%;
-  transform: translateX(-50%);
-  width: min(420px, 60vw);
-  height: min(420px, 60vw);
-  border-radius: 50%;
-  background: radial-gradient(circle,
-    var(--sun) 0%,
-    rgba(255, 184, 107, 0.4) 42%,
-    rgba(255, 184, 107, 0) 72%);
-  filter: blur(2px);
-  opacity: calc(var(--day-progress, 0) * 1.3);
-  transition: opacity 200ms linear;
-  pointer-events: none;
 }
 
 .sky-layer {
@@ -237,33 +215,18 @@ button {
 
 .cloud-blob {
   position: absolute;
-  background: radial-gradient(circle at 34% 28%,
-    rgba(255, 255, 255, 0.98) 0%,
-    rgba(255, 255, 255, 0.88) 48%,
-    rgba(205, 226, 244, 0.62) 100%);
+  background: var(--white);
   border-radius: 50%;
   opacity: 0.75;
-  filter: blur(1.5px) drop-shadow(0 12px 16px rgba(63, 106, 148, 0.16));
+  filter: blur(1px);
   animation: drift 34s ease-in-out infinite;
-  transition: filter 250ms linear;
 }
 .cloud-blob::before,
 .cloud-blob::after {
   content: "";
   position: absolute;
+  background: var(--white);
   border-radius: 50%;
-  background: radial-gradient(circle at 34% 28%,
-    rgba(255, 255, 255, 0.98) 0%,
-    rgba(255, 255, 255, 0.86) 48%,
-    rgba(205, 226, 244, 0.58) 100%);
-}
-
-/* Hero clouds shift from cool moonlit tones to warm sunlit tones
-   as --day-progress rises (see script.js scroll handler) */
-.hero .cloud-blob {
-  filter: blur(1.5px) drop-shadow(0 12px 16px rgba(20, 34, 64, 0.35))
-    brightness(calc(0.72 + var(--day-progress, 1) * 0.28))
-    saturate(calc(0.7 + var(--day-progress, 1) * 0.3));
 }
 .c1 { width: 160px; height: 60px; top: 12%; left: 8%; animation-duration: 38s; }
 .c1::before { width: 90px; height: 90px; top: -40px; left: 15px; }
@@ -286,9 +249,9 @@ button {
 .c5::after { width: 60px; height: 60px; top: -22px; left: 70px; }
 
 @keyframes drift {
-  0%   { transform: translateX(0) scale(1); }
-  50%  { transform: translateX(28px) scale(1.025); }
-  100% { transform: translateX(0) scale(1); }
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(28px); }
+  100% { transform: translateX(0); }
 }
 
 /* Bird — simple wings, flapping + gliding across the sky */
@@ -339,44 +302,9 @@ button {
 
 .hero-tagline {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--ink-soft);
   max-width: 520px;
   margin-bottom: 34px;
-}
-
-.hero .btn-ghost {
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  color: var(--white);
-}
-.hero .btn-ghost:hover { background: var(--white); color: var(--ink); }
-
-.hero .hero-note { color: rgba(255, 255, 255, 0.65); }
-
-.hero .scroll-cue { border-color: rgba(255, 255, 255, 0.55); }
-.hero .scroll-cue span { background: rgba(255, 255, 255, 0.85); }
-
-/* ---- Twinkling star particles over the hero photo ---- */
-.hero-stars {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: calc(1 - var(--day-progress, 0) * 1.15);
-  transition: opacity 200ms linear;
-}
-.hero-stars .star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: #ffffff;
-  border-radius: 50%;
-  animation: twinkle 3.2s ease-in-out infinite;
-}
-.hero-stars .star.big { width: 3px; height: 3px; box-shadow: 0 0 4px 1px rgba(255,255,255,0.6); }
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.15; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.4); }
 }
 
 .hero-actions {
@@ -453,33 +381,23 @@ button {
 }
 
 /* =========================================================
-   Hero background photo — the aurora screenshot is now the
-   hero's actual backdrop (logo.png is transparent, so it sits
-   directly on top of this), with a soft overlay for legibility
+   Intro ribbon — the animated GIF, shown ONCE at full width
+   (not tiled — the source animation isn't a repeating texture,
+   it's a single reveal, so we stretch it once instead of
+   repeating it, which avoided showing fragmented/duplicated
+   copies of the animation side by side)
    ========================================================= */
-.hero-bg-photo {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: url("images/hero-bg.png");
-  background-size: cover;
-  background-position: center 40%;
-  filter: blur(4px)
-    brightness(calc(0.82 + var(--day-progress, 0) * 0.4))
-    saturate(calc(0.85 + var(--day-progress, 0) * 0.25));
-  transition: filter 200ms linear;
-  transform: scale(1.05);
+.intro-ribbon {
+  width: 100%;
+  height: 52px;
+  overflow: hidden;
+  line-height: 0;
 }
-
-.hero-bg-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(180deg,
-    rgba(9, 20, 33, 0.35) 0%,
-    rgba(9, 20, 33, 0.15) 40%,
-    rgba(9, 20, 33, 0.15) 65%,
-    rgba(9, 20, 33, 0.45) 100%);
+.intro-ribbon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* =========================================================
@@ -784,13 +702,6 @@ button {
   padding: 30px 18px;
   box-shadow: var(--shadow-card);
   border: 1px solid rgba(18, 50, 73, 0.06);
-  border-top: 3px solid var(--sky-3);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-
-.staff-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-soft);
 }
 
 .staff-avatar {
@@ -818,52 +729,6 @@ button {
   font-size: 0.75rem;
   color: var(--mint);
   font-weight: 700;
-}
-
-/* ---- Staff section sky decoration (clouds + birds, matches hero) ---- */
-.staff-section {
-  position: relative;
-  overflow: hidden;
-}
-
-.staff-sky {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
-}
-
-.staff-sky .cloud-blob { opacity: 0.5; }
-
-.sc1 { width: 130px; height: 48px; top: 4%; left: 6%; animation-duration: 42s; }
-.sc1::before { width: 75px; height: 75px; top: -32px; left: 12px; }
-.sc1::after  { width: 56px; height: 56px; top: -20px; left: 62px; }
-
-.sc2 { width: 100px; height: 38px; top: 14%; right: 8%; animation-duration: 36s; animation-delay: -8s; }
-.sc2::before { width: 58px; height: 58px; top: -26px; left: 8px; }
-.sc2::after  { width: 46px; height: 46px; top: -16px; left: 48px; }
-
-.sc3 { width: 150px; height: 54px; bottom: 8%; left: 10%; animation-duration: 46s; animation-delay: -18s; }
-.sc3::before { width: 84px; height: 84px; top: -36px; left: 16px; }
-.sc3::after  { width: 62px; height: 62px; top: -22px; left: 78px; }
-
-.sc4 { width: 110px; height: 42px; bottom: 16%; right: 12%; animation-duration: 32s; animation-delay: -4s; }
-.sc4::before { width: 62px; height: 62px; top: -28px; left: 10px; }
-.sc4::after  { width: 48px; height: 48px; top: -18px; left: 52px; }
-
-.staff-bird-a { top: 10%; left: -10%; animation-duration: 34s; }
-.staff-bird-b { top: 55%; left: -14%; width: 26px; animation-duration: 40s; animation-delay: -14s; }
-
-.staff-sky .wing { fill: var(--sky-deep); opacity: 0.4; }
-
-.staff-section > .eyebrow,
-.staff-section > .section-title,
-.staff-section > .section-lede,
-.staff-org,
-.staff-note {
-  position: relative;
-  z-index: 1;
 }
 
 /* ---- Staff org chart (two branches, tiered) ---- */
@@ -918,33 +783,6 @@ button {
   color: var(--mint);
   margin-bottom: 14px;
 }
-
-/* Role-based accent colors — a quick visual read of the hierarchy */
-.branch-tier[data-tier="owner"] .tier-label { color: var(--sun-deep); }
-.branch-tier[data-tier="owner"] .staff-card { border-top-color: var(--sun-deep); }
-
-.branch-tier[data-tier="coowner"] .tier-label { color: var(--sun); }
-.branch-tier[data-tier="coowner"] .staff-card { border-top-color: var(--sun); }
-
-.branch-tier[data-tier="manager"] .tier-label,
-.branch-tier[data-tier="architect-head"] .tier-label { color: var(--mint); }
-.branch-tier[data-tier="manager"] .staff-card,
-.branch-tier[data-tier="architect-head"] .staff-card { border-top-color: var(--mint); }
-
-.branch-tier[data-tier="assistant"] .tier-label,
-.branch-tier[data-tier="architect"] .tier-label { color: var(--mint-light); }
-.branch-tier[data-tier="assistant"] .staff-card,
-.branch-tier[data-tier="architect"] .staff-card { border-top-color: var(--mint-light); }
-
-.branch-tier[data-tier="admin"] .tier-label { color: var(--sky-deep); }
-.branch-tier[data-tier="admin"] .staff-card { border-top-color: var(--sky-deep); }
-
-.branch-tier[data-tier="moderator"] .tier-label { color: var(--ink-soft); }
-.branch-tier[data-tier="moderator"] .staff-card { border-top-color: var(--ink-soft); }
-
-.branch-tier[data-tier="support"] .tier-label { color: var(--ink-faint); }
-.branch-tier[data-tier="support"] .staff-card { border-top-color: var(--sky-3); }
-
 
 .tier-members {
   display: flex;
@@ -1166,24 +1004,6 @@ button {
   100% { transform: translateX(145vw); }
 }
 
-.bg-bird {
-  position: absolute;
-  width: 34px;
-  height: auto;
-  animation: bg-fly linear infinite;
-}
-.bg-bird .wing { fill: var(--sky-deep); opacity: 0.5; }
-.bg-bird .wing-left,
-.bg-bird .wing-right { animation: flap 0.55s ease-in-out infinite alternate; }
-
-.bgb1 { top: 16%; left: -12%; animation-duration: 48s; }
-.bgb2 { top: 62%; left: -18%; width: 24px; opacity: 0.7; animation-duration: 64s; animation-delay: -22s; }
-
-@keyframes bg-fly {
-  0%   { transform: translate(0, 0); }
-  100% { transform: translate(145vw, -60px); }
-}
-
 /* =========================================================
    Player Gallery
    ========================================================= */
@@ -1209,7 +1029,7 @@ button {
   position: relative;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-lg);
-  overflow: visible;
+  overflow: hidden;
   background: var(--white);
   box-shadow: var(--shadow-soft);
   border: 6px solid var(--white);
@@ -1228,58 +1048,15 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: calc(var(--radius-lg) - 4px);
   opacity: 0;
-  translate: 0 0;
-  transform: scale(0.9) rotate(0deg);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
-    filter 0.7s ease, translate 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform: scale(1.02);
+  transition: opacity 0.5s ease, transform 0.6s ease;
   pointer-events: none;
 }
-
 .gallery-slide.is-active {
   opacity: 1;
-  translate: 0 0;
-  transform: scale(1) rotate(0deg);
-  box-shadow: 0 18px 38px rgba(18, 50, 73, 0.22);
-  z-index: 2;
+  transform: scale(1);
   pointer-events: auto;
-}
-
-/* Prev/next slides peek out from behind the active photo, gently
-   bobbing like drifting clouds until they're brought to the front */
-.gallery-slide.is-prev,
-.gallery-slide.is-next {
-  opacity: 0.55;
-  transform: scale(0.82) rotate(-4deg);
-  filter: saturate(0.7) brightness(0.92);
-  box-shadow: 0 12px 26px rgba(18, 50, 73, 0.16);
-  z-index: 1;
-  pointer-events: auto;
-  cursor: pointer;
-  animation: gallery-float-prev 6s ease-in-out infinite;
-}
-.gallery-slide.is-next {
-  transform: scale(0.82) rotate(4deg);
-  animation-name: gallery-float-next;
-  animation-delay: -3s;
-}
-
-.gallery-slide.is-hidden {
-  opacity: 0;
-  translate: 0 0;
-  transform: scale(0.7) rotate(0deg);
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes gallery-float-prev {
-  0%, 100% { translate: -58% 0; }
-  50%      { translate: -58% -10px; }
-}
-@keyframes gallery-float-next {
-  0%, 100% { translate: 58% 0; }
-  50%      { translate: 58% -10px; }
 }
 
 .gallery-arrow {
@@ -1298,7 +1075,7 @@ button {
   justify-content: center;
   box-shadow: var(--shadow-card);
   transition: background 0.2s, transform 0.2s;
-  z-index: 5;
+  z-index: 2;
 }
 .gallery-arrow:hover { background: var(--mint-light); transform: translateY(-50%) scale(1.08); }
 .gallery-arrow.prev { left: 14px; }
@@ -1311,7 +1088,7 @@ button {
   transform: translateX(-50%);
   display: flex;
   gap: 7px;
-  z-index: 5;
+  z-index: 2;
 }
 .gallery-dot {
   width: 8px;
@@ -1529,72 +1306,48 @@ button {
   .btn { width: 100%; align-items: center; text-align: center; }
   .gallery-arrow { width: 34px; height: 34px; font-size: 1.1rem; }
   .gallery-list { gap: 46px; }
-  .gallery-slide.is-prev,
-  .gallery-slide.is-next { transform: scale(0.88) rotate(-3deg); }
-  .gallery-slide.is-next { transform: scale(0.88) rotate(3deg); }
-  @keyframes gallery-float-prev {
-    0%, 100% { translate: -38% 0; }
-    50%      { translate: -38% -8px; }
-  }
-  @keyframes gallery-float-next {
-    0%, 100% { translate: 38% 0; }
-    50%      { translate: 38% -8px; }
-  }
 }
 
-/* =========================================================
-   Gallery lightbox
-   ========================================================= */
-.gallery-slide.is-active { cursor: zoom-in; }
 
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: rgba(9, 20, 33, 0.88);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-.lightbox.open { opacity: 1; pointer-events: auto; }
-
-.lightbox img {
-  max-width: min(90vw, 1100px);
-  max-height: 88vh;
-  border-radius: var(--radius-md);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 22px;
-  right: 28px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.12);
+/* ===== AevonSMP cover hero override ===== */
+.hero {
+  min-height: 88vh;
+  background:
+    linear-gradient(180deg, rgba(8, 25, 38, 0.22) 0%, rgba(8, 25, 38, 0.38) 52%, rgba(8, 25, 38, 0.56) 100%),
+    url("images/AevonSMPCover.jpg") center center / cover no-repeat;
   color: var(--white);
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: background 0.18s ease;
 }
-.lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
 
-/* =========================================================
-   Scroll-reveal entrance animation (fade + rise into view)
-   ========================================================= */
-.reveal-fade {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.hero .sky-layer {
+  opacity: 0.28;
 }
-.reveal-fade.in-view {
-  opacity: 1;
-  transform: translateY(0);
+
+.hero .eyebrow,
+.hero .hero-tagline,
+.hero .hero-note {
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.42);
+}
+
+.hero-logo {
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+}
+
+.hero .btn-ghost {
+  border-color: rgba(255, 255, 255, 0.92);
+  color: var(--white);
+  background: rgba(13, 40, 60, 0.18);
+  backdrop-filter: blur(4px);
+}
+
+.hero .btn-ghost:hover {
+  background: var(--white);
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 82vh;
+    background-position: center center;
+  }
 }
